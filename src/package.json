@@ -1,0 +1,26 @@
+{
+  "name": "noiseg8",
+  "version": "0.0.1",
+  "description": "Free and Open-Source DAW",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoiseG8/NoiseG8.git"
+  },
+  "keywords": [
+    "daw",
+    "noisegate"
+  ],
+  "author": "AZ Software",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NoiseG8/NoiseG8/issues"
+  },
+  "homepage": "https://github.com/NoiseG8/NoiseG8#readme",
+  "devDependencies": {
+    "electron": "^17.1.2"
+  }
+}
