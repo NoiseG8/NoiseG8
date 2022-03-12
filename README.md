@@ -16,3 +16,15 @@
 
 <!---![Lines of code](https://img.shields.io/tokei/lines/github/azproductions/AstroFlare)--->
 </div>
+
+NoiseG8 is build on react-naitive, for the optimal performance intergrated with c++ code, to create the best music making experience.
+
+
+## Build 🔨
+
+`cd src && npm install`
+
+*On Windows*
+
+- `npx react-native-windows-init --overwrite` to install the dependencies
+- `npx react-native run-windows` to run the build
