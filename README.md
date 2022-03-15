@@ -17,7 +17,7 @@
 <!---![Lines of code](https://img.shields.io/tokei/lines/github/azproductions/AstroFlare)--->
 </div>
 
-NoiseG8 is build on react-naitive, for the optimal performance intergrated with c++ code, to create the best music making experience.
+NoiseG8 is build on flutter, for the optimal performance intergrated with c++ code, to create the best music making experience.
 
 
 ## Build 🔨
