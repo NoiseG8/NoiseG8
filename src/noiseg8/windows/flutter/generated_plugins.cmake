@@ -3,6 +3,8 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  url_launcher_windows
+  window_manager
 )
 
 set(PLUGIN_BUNDLED_LIBRARIES)
