@@ -39,16 +39,20 @@ class MyAppState extends State<MyApp> {
       title: 'NoiseG8',
       home: NavigationView(
         appBar: NavigationAppBar(
-          title: Text('NoiseG8'),
+          //title: Text('NoiseG8'),
           actions: DragToMoveArea(
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [Spacer(), WindowButtons()],
+              children: const [
+                TopMenu(),
+                Spacer(),
+                WindowButtons(),
+              ],
             ),
           ),
 
           /// If automaticallyImplyLeading is true, a 'back button' will be added to
-          /// app bar. This property can be overritten by [leading]
+          /// app bar. This property can be overwritten by [leading]
           automaticallyImplyLeading: false,
         ),
         pane:
@@ -68,6 +72,47 @@ class MyAppState extends State<MyApp> {
           PaneItem(icon: Icon(FluentIcons.design), title: Text("Sample Page 2"))
         ]),
       ));
+}
+
+class TopMenu extends StatelessWidget {
+  const TopMenu({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+        padding: const EdgeInsets.all(6.0),
+        child: Padding(
+            padding: const EdgeInsets.only(left: 45.0), child: TopMenuItem()));
+    // IconButton(
+    // icon: Icon(FluentIcons.settings, size: 20.0),
+    // onPressed: null),
+  }
+
+  DropDownButton TopMenuItem() {
+    return DropDownButton(
+      // leading: Icon(FluentIcons.accept),
+      title: const Text('File'),
+      items: [
+        DropDownButtonItem(
+          title: const Text('Left'),
+          leading: const Icon(FluentIcons.align_left),
+          onTap: () => debugPrint('left'),
+        ),
+        DropDownButtonItem(
+          title: const Text('Center'),
+          leading: const Icon(FluentIcons.align_center),
+          onTap: () => debugPrint('center'),
+        ),
+        DropDownButtonItem(
+          title: const Text('Right'),
+          leading: const Icon(FluentIcons.align_right),
+          onTap: () => debugPrint('right'),
+        ),
+      ],
+    );
+  }
 }
 
 class WindowButtons extends StatelessWidget {
