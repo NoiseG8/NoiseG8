@@ -1,30 +1,40 @@
+<div>
 <h1 align="center">
- 
-![GitHub Light](./.assets/socialicon-250-dm.png#gh-dark-mode-only)<br />
-![GitHub Light](./.assets/socialicon-250.png#gh-light-mode-only)
 
- NoiseG8
+![gh-banner](https://user-images.githubusercontent.com/66299945/159171857-f28b71e7-d102-4443-ac49-17cafde24ffa.png)
 
 </h1>
+
+<h4 align="center">
+
+  | :warning: | **NoiseG8 is currently in development.** <br> Help us out and contribute to our project to jumpstart development. | &nbsp;&nbsp;&nbsp;&nbsp;[CONTRIBUTE](https://azsoftware.org/help)&nbsp;&nbsp;&nbsp;&nbsp; |
+| - |:-| - |
+
+</h6>
+</div>
+
+----
+
 <h4 align="center" style="font-weight: bold; font-style: italic;">NoiseG8, a free and open-source daw. Created for simplicity and efficiency.</h4>
 
 <div align="center">
 
-[![Release](https://img.shields.io/github/downloads/azproductions/AstroFlare/total)](https://github.com/AZProductions/AstroFlare/releases)
-[![Release(latest)](https://img.shields.io/github/downloads/azproductions/AstroFlare/latest/total)](https://github.com/AZProductions/AstroFlare/releases/latest)
-[![Size](https://img.shields.io/github/repo-size/azproductions/AstroFlare?label=Package%20Size)]()
-
+![Downloads](https://img.shields.io/github/downloads/NoiseG8/NoiseG8/total?style=for-the-badge)
+![Size](https://img.shields.io/github/languages/code-size/noiseg8/noiseg8?style=for-the-badge)
+![Latest](https://img.shields.io/github/v/release/noiseg8/noiseg8?label=stable&style=for-the-badge)
+![MS](https://img.shields.io/badge/Microsoft%20Store-Deployed-blue?style=for-the-badge&logo=microsoft)
 <!---![Lines of code](https://img.shields.io/tokei/lines/github/azproductions/AstroFlare)--->
 </div>
 
-NoiseG8 is build on flutter, for the optimal performance intergrated with c++ code, to create the best music making experience.
+**NoiseG8** is built on flutter, for the optimal performance intergrated with c++ code, to create the best music making experience.
 
 
 ## Build 🔨
 
-`cd src && npm install`
-
-*On Windows*
-
-- `npx react-native-windows-init --overwrite` to install the dependencies
-- `npx react-native run-windows` to run the build
+```bash
+$ flutter install
+```
+```bash
+$ flutter run
+```
+select Windows Executable if you are on windows, and macOS app if you're on macOS
