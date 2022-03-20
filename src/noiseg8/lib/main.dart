@@ -1,6 +1,7 @@
 import 'package:arna/arna.dart';
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:noiseg8/window_buttons_sized_box.dart';
+import 'package:noiseg8/window/top_menu_item.dart';
+import 'package:noiseg8/window/window_buttons_sized_box.dart';
 import 'package:url_launcher/link.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -19,10 +20,12 @@ void main() async {
     await windowManager.show();
     await windowManager.setSkipTaskbar(false);
   });
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -32,7 +35,7 @@ class MyApp extends StatefulWidget {
 
 class MyAppState extends State<MyApp> {
   @override
-  Widget build(BuildContext context) => MainState();
+  Widget build(BuildContext context) => const MainState();
 }
 
 class MainState extends StatelessWidget {
@@ -58,7 +61,7 @@ class MainState extends StatelessWidget {
                 children: const [
                   TopMenu(),
                   Spacer(),
-                  WindowButtons(),
+                  _WindowButtons(),
                 ],
               ),
             ),
@@ -83,10 +86,10 @@ class MainState extends StatelessWidget {
               ],
               items: [
                 PaneItem(
-                    icon: Icon(FluentIcons.code), title: Text("Sample Page 1")),
+                    icon: const Icon(FluentIcons.code), title: const Text("Sample Page 1")),
                 PaneItem(
-                    icon: Icon(FluentIcons.design),
-                    title: Text("Sample Page 2"))
+                    icon: const Icon(FluentIcons.design),
+                    title: const Text("Sample Page 2"))
               ]),
         ));
   }
@@ -99,91 +102,19 @@ class TopMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.all(6.0),
+    return const Padding(
+        padding: EdgeInsets.all(6.0),
         child: Padding(
-            padding: const EdgeInsets.only(left: 45.0), child: TopMenuItem()));
+            padding: EdgeInsets.only(left: 45.0),
+            child: top_menu_item()));
     // IconButton(
     // icon: Icon(FluentIcons.settings, size: 20.0),
     // onPressed: null),
   }
-
-  Widget TopMenuItem() {
-    return Padding(
-      padding: const EdgeInsets.all(0),
-      child: Row(
-        children: [
-          DropDownButton(
-            // leading: Icon(FluentIcons.accept),
-            title: const Text('File'),
-            items: [
-              DropDownButtonItem(
-                title: const Text('Ctrl+N'),
-                leading: const Text('New Project'),
-                onTap: () => debugPrint('left'),
-              ),
-              DropDownButtonItem(
-                title: const Text('Ctrl+O'),
-                leading: const Text('Open Project'),
-                onTap: () => debugPrint('center'),
-              ),
-              DropDownButtonItem(
-                title: const Text('Right'),
-                leading: const Icon(FluentIcons.align_right),
-                onTap: () => debugPrint('right'),
-              ),
-            ],
-          ),
-          DropDownButton(
-            // leading: Icon(FluentIcons.accept),
-            title: const Text('Edit'),
-            items: [
-              DropDownButtonItem(
-                title: const Text('Ctrl+N'),
-                leading: const Text('New Project'),
-                onTap: () => debugPrint('left'),
-              ),
-              DropDownButtonItem(
-                title: const Text('Ctrl+O'),
-                leading: const Text('Open Project'),
-                onTap: () => debugPrint('center'),
-              ),
-              DropDownButtonItem(
-                title: const Text('Right'),
-                leading: const Icon(FluentIcons.align_right),
-                onTap: () => debugPrint('right'),
-              ),
-            ],
-          ),
-          DropDownButton(
-            // leading: Icon(FluentIcons.accept),
-            title: const Text('Preferences'),
-            items: [
-              DropDownButtonItem(
-                title: const Text('Ctrl+N'),
-                leading: const Text('New Project'),
-                onTap: () => debugPrint('left'),
-              ),
-              DropDownButtonItem(
-                title: const Text('Ctrl+O'),
-                leading: const Text('Open Project'),
-                onTap: () => debugPrint('center'),
-              ),
-              DropDownButtonItem(
-                title: const Text('Right'),
-                leading: const Icon(FluentIcons.align_right),
-                onTap: () => debugPrint('right'),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
 }
 
-class WindowButtons extends StatelessWidget {
-  const WindowButtons({Key? key}) : super(key: key);
+class _WindowButtons extends StatelessWidget {
+  const _WindowButtons({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
