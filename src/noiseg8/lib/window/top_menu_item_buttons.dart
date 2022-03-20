@@ -1,8 +1,7 @@
-import 'package:arna/arna.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
-class top_menu_item_buttons extends StatelessWidget {
-  const top_menu_item_buttons({
+class TopMenuItemButtons extends StatelessWidget {
+  const TopMenuItemButtons({
     Key? key,
   }) : super(key: key);
 
