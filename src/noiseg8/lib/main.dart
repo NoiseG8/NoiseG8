@@ -1,4 +1,6 @@
+import 'package:arna/arna.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:noiseg8/window_buttons_sized_box.dart';
 import 'package:url_launcher/link.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -30,48 +32,64 @@ class MyApp extends StatefulWidget {
 
 class MyAppState extends State<MyApp> {
   @override
-  Widget build(BuildContext context) => FluentApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          accentColor: Colors.blue,
-          brightness: Brightness.dark, // or Brightness.dark
-          iconTheme: const IconThemeData(size: 24)),
-      title: 'NoiseG8',
-      home: NavigationView(
-        appBar: NavigationAppBar(
-          //title: Text('NoiseG8'),
-          actions: DragToMoveArea(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                TopMenu(),
-                Spacer(),
-                WindowButtons(),
-              ],
-            ),
-          ),
+  Widget build(BuildContext context) => MainState();
+}
 
-          /// If automaticallyImplyLeading is true, a 'back button' will be added to
-          /// app bar. This property can be overwritten by [leading]
-          automaticallyImplyLeading: false,
-        ),
-        pane:
-            NavigationPane(displayMode: PaneDisplayMode.minimal, footerItems: [
-          PaneItemSeparator(),
-          PaneItem(
-            icon: const Icon(FluentIcons.settings),
-            title: const Text('Settings'),
+class MainState extends StatelessWidget {
+  const MainState({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FluentApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+            accentColor: Colors.blue,
+            brightness: Brightness.dark, // or Brightness.dark
+            iconTheme: const IconThemeData(size: 24)),
+        title: 'NoiseG8',
+        home: NavigationView(
+          appBar: NavigationAppBar(
+            //title: Text('NoiseG8'),
+            actions: DragToMoveArea(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  TopMenu(),
+                  Spacer(),
+                  WindowButtons(),
+                ],
+              ),
+            ),
+
+            /// If automaticallyImplyLeading is true, a 'back button' will be added to
+            /// app bar. This property can be overwritten by [leading]
+            automaticallyImplyLeading: false,
           ),
-          _LinkPaneItemAction(
-            icon: const Icon(FluentIcons.open_source),
-            title: const Text('Source code'),
-            link: 'https://google.com/fluent_ui',
-          ),
-        ], items: [
-          PaneItem(icon: Icon(FluentIcons.code), title: Text("Sample Page 1")),
-          PaneItem(icon: Icon(FluentIcons.design), title: Text("Sample Page 2"))
-        ]),
-      ));
+          pane: NavigationPane(
+              displayMode: PaneDisplayMode.minimal,
+              footerItems: [
+                PaneItemSeparator(),
+                _LinkPaneItemAction(
+                  icon: const Icon(FluentIcons.open_source),
+                  title: const Text('Source code'),
+                  link: 'https://google.com/fluent_ui',
+                ),
+                PaneItem(
+                  icon: const Icon(FluentIcons.settings),
+                  title: const Text('Settings'),
+                ),
+              ],
+              items: [
+                PaneItem(
+                    icon: Icon(FluentIcons.code), title: Text("Sample Page 1")),
+                PaneItem(
+                    icon: Icon(FluentIcons.design),
+                    title: Text("Sample Page 2"))
+              ]),
+        ));
+  }
 }
 
 class TopMenu extends StatelessWidget {
@@ -171,14 +189,7 @@ class WindowButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData theme = FluentTheme.of(context);
 
-    return SizedBox(
-      width: 138,
-      height: 50,
-      child: WindowCaption(
-        brightness: theme.brightness,
-        backgroundColor: Colors.transparent,
-      ),
-    );
+    return WindowButtonsSizedBox(theme: theme);
   }
 }
 

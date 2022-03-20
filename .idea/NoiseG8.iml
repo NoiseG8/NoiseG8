@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/linux/flutter/ephemeral/.plugin_symlinks/window_manager/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/linux/flutter/ephemeral/.plugin_symlinks/window_manager/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/linux/flutter/ephemeral/.plugin_symlinks/window_manager/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/linux/flutter/ephemeral/.plugin_symlinks/window_manager/build" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/linux/flutter/ephemeral/.plugin_symlinks/window_manager/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/linux/flutter/ephemeral/.plugin_symlinks/window_manager/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/build" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/windows/flutter/ephemeral/.plugin_symlinks/window_manager/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/windows/flutter/ephemeral/.plugin_symlinks/window_manager/build" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/windows/flutter/ephemeral/.plugin_symlinks/window_manager/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/windows/flutter/ephemeral/.plugin_symlinks/window_manager/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/windows/flutter/ephemeral/.plugin_symlinks/window_manager/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/windows/flutter/ephemeral/.plugin_symlinks/window_manager/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/build" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/windows/flutter/ephemeral/.plugin_symlinks/msix/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/windows/flutter/ephemeral/.plugin_symlinks/msix/build" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/windows/flutter/ephemeral/.plugin_symlinks/msix/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/build" />
+      <excludeFolder url="file://$MODULE_DIR$/src/noiseg8/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/.dart_tool" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Dart SDK" level="project" />
+    <orderEntry type="library" name="Dart Packages" level="project" />
+  </component>
+</module>
