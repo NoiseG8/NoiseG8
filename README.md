@@ -1,9 +1,4 @@
 <div>
-<h1 align="center">
-
-![gh-banner](https://user-images.githubusercontent.com/66299945/159171857-f28b71e7-d102-4443-ac49-17cafde24ffa.png)
-
-</h1>
 
 <h4 align="center">
 
