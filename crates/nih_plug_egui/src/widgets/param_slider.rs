@@ -296,12 +296,6 @@ impl<'a, P: Param> ParamSlider<'a, P> {
                         stroke,
                     );
                 }
-
-                let text_pos = ui
-                    .layout()
-                    .align_size_within_rect(text.size(), response.rect.shrink2(padding))
-                    .min;
-                text.paint_with_visuals(ui.painter(), text_pos, &visuals);
             }
         }
     }

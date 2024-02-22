@@ -311,8 +311,6 @@ impl<State, U> WindowHandler
                 platform_output,
                 mut textures_delta,
                 mut shapes,
-                pixels_per_point,
-                viewport_output,
             } = self.egui_ctx.end_frame();
 
             let now = Instant::now();
@@ -478,6 +476,7 @@ impl<State, U> WindowHandler
                         pressed,
                         repeat: event.repeat,
                         modifiers: self.egui_input.modifiers,
+                        physical_key: todo!(),
                     });
                 }
 

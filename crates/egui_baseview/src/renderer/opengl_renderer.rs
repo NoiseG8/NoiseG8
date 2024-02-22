@@ -1,9 +1,9 @@
 use baseview::Window;
 use egui_glow::Painter;
-use std::rc::Rc;
+use std::sync::Arc;
 
 pub struct Renderer {
-    glow_context: Rc<egui_glow::glow::Context>,
+    glow_context: Arc<egui_glow::glow::Context>,
     painter: Painter,
 }
 
@@ -16,11 +16,11 @@ impl Renderer {
             context.make_current();
         }
 
-        let glow_context = Rc::new(unsafe {
+        let glow_context = Arc::new(unsafe {
             egui_glow::glow::Context::from_loader_function(|s| context.get_proc_address(s))
         });
 
-        let painter = egui_glow::Painter::new(Rc::clone(&glow_context), "", None)
+        let painter = egui_glow::Painter::new(Arc::clone(&glow_context), "", None)
             .map_err(|error| {
                 eprintln!("error occurred in initializing painter:\n{}", error);
             })
