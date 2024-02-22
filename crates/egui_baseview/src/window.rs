@@ -11,7 +11,7 @@ use copypasta::ClipboardProvider;
 use egui::{ pos2, vec2, Pos2, Rect, Rgba, ViewportId, ViewportInfo };
 use keyboard_types::Modifiers;
 use raw_window_handle::HasRawWindowHandle;
-use std::time::{Duration, Instant};
+use std::time::Instant;
 
 use crate::renderer::Renderer;
 
@@ -309,8 +309,8 @@ impl<State, U> WindowHandler
 
             let egui::FullOutput {
                 platform_output,
-                textures_delta,
-                shapes,
+                mut textures_delta,
+                mut shapes,
                 pixels_per_point,
                 viewport_output,
             } = self.egui_ctx.end_frame();
@@ -322,6 +322,7 @@ impl<State, U> WindowHandler
                 self.repaint_after.is_none()
             };
 
+            
             if do_repaint_now {
                 self.renderer.render(
                     window,
@@ -335,10 +336,8 @@ impl<State, U> WindowHandler
                 );
 
                 self.repaint_after = None;
-            } else if let Some(repaint_after_instant) =
-                    std::time::Instant::now().checked_add(repaint_delay) {
-                // Schedule to repaint after the requested time has elapsed.
-                self.repaint_after = Some(repaint_after_instant);
+            } else if let Some(repaint_after) = self.repaint_after.and_then(|instant| now.checked_add(instant.duration_since(now))) {
+                self.repaint_after = Some(repaint_after);
             }
 
             if !platform_output.copied_text.is_empty() {
