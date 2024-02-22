@@ -13,11 +13,11 @@ readme = "README.md"
 
 [features]
 default = ["opengl"]
-opengl = ["egui_glow", "baseview/opengl"]
+opengl = ["baseview/opengl"]
 
 [dependencies]
 egui = { workspace = true }
-egui_glow = { version = "0.22", optional = true }
+egui_glow = { workspace = true }
 keyboard-types = { version = "0.6.1", default-features = false }
 baseview = { workspace = true }
 raw-window-handle = { workspace = true }
