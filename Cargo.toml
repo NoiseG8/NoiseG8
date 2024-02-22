@@ -29,6 +29,7 @@ raw-window-handle = "0.4"
 [workspace]
 members = [
     "crates/nih_plug_egui",
+    "crates/egui_baseview",
     "xtask"
 ]
 
