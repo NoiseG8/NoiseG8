@@ -1,0 +1,35 @@
+[package]
+name = "nih_plug_egui"
+version = "0.0.0"
+edition = "2021"
+authors = ["Robbert van der Helm <mail@robbertvanderhelm.nl>"]
+license = "ISC"
+
+description = "An adapter to use egui GUIs with NIH-plug"
+
+[features]
+default = ["egui-default-features", "opengl"]
+
+# Use egui's default features
+egui-default-features = ["egui/default"]
+# `nih_plug_egui` always uses OpenGL since egui's wgpu backend is still unstable
+# depending on the platform
+opengl = []
+
+[dependencies]
+nih_plug = { workspace = true }
+
+# The currently targeted version of baseview uses a different version of
+# `raw_window_handle` than NIH-plug, so we need to manually convert between them
+raw-window-handle = { workspace = true }
+
+baseview = { workspace = true }
+crossbeam = "0.8"
+# The `egui-default-features` feature enables the default features. This makes
+# it possible to opt out of this if needed.
+egui = { workspace = true }
+egui_baseview = { path = "../egui_baseview" }
+lazy_static = "1.4"
+parking_lot = "0.12"
+# To make the state persistable
+serde = { version = "1.0", features = ["derive"] }

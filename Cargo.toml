@@ -1,25 +1,36 @@
 [package]
 name = "NoiseG8"
-version = "0.1.0"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "TODO"
+
+[workspace.package]
+homepage = "zmann.org"
+version = "0.0.0"
 edition = "2021"
 authors = ["ZMANN <info@zmann.org>"]
 license = "GPL-3.0-or-later"
-homepage = "zmann.org"
-description = "TODO"
-
-[workspace]
-members = ["xtask"]
 
 [lib]
 crate-type = ["cdylib"]
 
 [dependencies]
-# Remove the `assert_process_allocs` feature to allow allocations on the audio
-# thread in debug builds.
-nih_plug = { git = "https://github.com/robbert-vdh/nih-plug.git", features = ["assert_process_allocs"] }
-# Uncomment the below line to disable the on-by-default VST3 feature to remove
-# the GPL compatibility requirement
-# nih_plug = { git = "https://github.com/robbert-vdh/nih-plug.git", default_features = false, features = ["assert_process_allocs"] }
+nih_plug = { workspace = true }
+nih_plug_egui = { path = "crates/nih_plug_egui" }
+atomic_float = "0.1"
+
+[workspace.dependencies]
+nih_plug = { git = "https://github.com/robbert-vdh/nih-plug.git" }
+egui = { version = "0.22", default-features = false }
+baseview = { git = "https://github.com/RustAudio/baseview.git", rev = "1d9806d5bd92275d0d8142d9c9c90198757b9b25" }
+raw-window-handle = "0.4"
+
+[workspace]
+members = [
+    "crates/nih_plug_egui",
+    "xtask"
+]
 
 [profile.release]
 lto = "thin"
