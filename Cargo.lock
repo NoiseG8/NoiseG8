@@ -104,7 +104,6 @@ dependencies = [
 [[package]]
 name = "baseview"
 version = "0.1.0"
-source = "git+https://github.com/RustAudio/baseview.git?rev=2c1b1a7b0fef1a29a5150a6a8f6fef6a0cbab8c4#2c1b1a7b0fef1a29a5150a6a8f6fef6a0cbab8c4"
 dependencies = [
  "cocoa",
  "core-foundation",
@@ -112,6 +111,7 @@ dependencies = [
  "nix",
  "objc",
  "raw-window-handle",
+ "rtrb",
  "uuid",
  "winapi",
  "x11",
@@ -162,6 +162,12 @@ dependencies = [
  "quote",
  "syn 2.0.50",
 ]
+
+[[package]]
+name = "cache-padded"
+version = "1.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "981520c98f422fcc584dc1a95c334e6953900b9106bc47a9839b81790009eb21"
 
 [[package]]
 name = "cc"
@@ -912,6 +918,15 @@ source = "git+https://github.com/nicokoch/reflink.git?rev=e8d93b465f5d9ad340cd05
 dependencies = [
  "libc",
  "winapi",
+]
+
+[[package]]
+name = "rtrb"
+version = "0.2.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "99e704dd104faf2326a320140f70f0b736d607c1caa1b1748a6c568a79819109"
+dependencies = [
+ "cache-padded",
 ]
 
 [[package]]
