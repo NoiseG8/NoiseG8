@@ -8,16 +8,19 @@ homepage = "zmann.org"
 description = "TODO"
 
 [workspace]
-members = ["xtask"]
+members = ["xtask", "crates/nih_plug_egui", "crates/egui_baseview"]
 
 [lib]
 crate-type = ["cdylib"]
 
 [dependencies]
 nih_plug = { workspace = true }
+nih_plug_egui = { path = "crates/nih_plug_egui" }
 
 [workspace.dependencies]
 nih_plug = { git = "https://github.com/robbert-vdh/nih-plug.git" }
+raw-window-handle = "0.5"
+baseview = { git = "https://github.com/RustAudio/baseview.git", rev = "2c1b1a7b0fef1a29a5150a6a8f6fef6a0cbab8c4" }
 
 [profile.release]
 lto = "thin"
