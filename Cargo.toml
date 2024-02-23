@@ -22,14 +22,15 @@ atomic_float = "0.1"
 
 [workspace.dependencies]
 nih_plug = { git = "https://github.com/robbert-vdh/nih-plug.git" }
-egui = { version = "0.22", default-features = false }
-baseview = { git = "https://github.com/RustAudio/baseview.git", rev = "1d9806d5bd92275d0d8142d9c9c90198757b9b25" }
-raw-window-handle = "0.4"
+egui = { version = "0.26", default-features = false, features = ["bytemuck"] }
+baseview = { git = "https://github.com/RustAudio/baseview.git", rev = "2c1b1a7b0fef1a29a5150a6a8f6fef6a0cbab8c4" }
+raw-window-handle = "0.5"
+
 
 [workspace]
 members = [
     "crates/nih_plug_egui",
-    "crates/egui_baseview",
+    "crates/egui-baseview",
     "xtask"
 ]
 

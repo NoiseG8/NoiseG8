@@ -22,7 +22,7 @@ impl Renderer {
 
         let painter = egui_glow::Painter::new(Arc::clone(&glow_context), "", None)
             .map_err(|error| {
-                eprintln!("error occurred in initializing painter:\n{}", error);
+                log::error!("Error occurred in initializing painter:\n{}", error);
             })
             .unwrap();
 
@@ -34,6 +34,10 @@ impl Renderer {
             glow_context,
             painter,
         }
+    }
+
+    pub fn max_texture_side(&self) -> usize {
+        self.painter.max_texture_side()
     }
 
     pub fn render(
@@ -68,7 +72,7 @@ impl Renderer {
             self.painter.set_texture(id, &image_delta);
         }
 
-        let clipped_primitives = egui_ctx.tessellate(shapes);
+        let clipped_primitives = egui_ctx.tessellate(shapes, pixels_per_point);
         let dimensions: [u32; 2] = [canvas_width, canvas_height];
 
         self.painter
