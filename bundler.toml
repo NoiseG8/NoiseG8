@@ -4,5 +4,5 @@
 # [package_name]
 # name = "Human Readable Plugin Name"  # defaults to <package_name>
 
-[NoiseG8]
+[noiseg8]
 name = "NoiseG8"

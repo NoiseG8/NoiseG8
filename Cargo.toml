@@ -1,38 +1,23 @@
 [package]
-name = "NoiseG8"
-version.workspace = true
-edition.workspace = true
-license.workspace = true
-description = "TODO"
-
-[workspace.package]
-homepage = "zmann.org"
+name = "noiseg8"
 version = "0.0.0"
 edition = "2021"
 authors = ["ZMANN <info@zmann.org>"]
 license = "GPL-3.0-or-later"
+homepage = "zmann.org"
+description = "TODO"
+
+[workspace]
+members = ["xtask"]
 
 [lib]
 crate-type = ["cdylib"]
 
 [dependencies]
 nih_plug = { workspace = true }
-nih_plug_egui = { path = "crates/nih_plug_egui" }
-atomic_float = "0.1"
 
 [workspace.dependencies]
 nih_plug = { git = "https://github.com/robbert-vdh/nih-plug.git" }
-egui = { version = "0.26", default-features = false, features = ["bytemuck"] }
-baseview = { git = "https://github.com/RustAudio/baseview.git", rev = "2c1b1a7b0fef1a29a5150a6a8f6fef6a0cbab8c4" }
-raw-window-handle = "0.5"
-
-
-[workspace]
-members = [
-    "crates/nih_plug_egui",
-    "crates/egui-baseview",
-    "xtask"
-]
 
 [profile.release]
 lto = "thin"
