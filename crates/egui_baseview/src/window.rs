@@ -150,7 +150,7 @@ where
         let physical_height =
             (open_settings.logical_height * pixels_per_point as f64).round() as u32;
 
-        let mut bg_color = Rgba::BLACK;
+        let mut bg_color = Rgba::TRANSPARENT;
         let mut close_requested = false;
         let mut queue = Queue::new(&mut bg_color, &mut close_requested);
         (build)(&egui_ctx, &mut queue, &mut state);
@@ -321,7 +321,6 @@ where
         if do_repaint_now {
             self.renderer.render(
                 window,
-                self.bg_color,
                 self.physical_width,
                 self.physical_height,
                 self.pixels_per_point,
