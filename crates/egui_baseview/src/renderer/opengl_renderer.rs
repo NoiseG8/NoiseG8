@@ -63,7 +63,7 @@ impl Renderer {
         unsafe {
             use egui_glow::glow::HasContext as _;
             self.glow_context
-                .clear_color(0.0, 0.0, 0.0, 256.0);
+                .clear_color(0.0, 0.0, 0.0, 0.0);
             self.glow_context.clear(egui_glow::glow::COLOR_BUFFER_BIT);
         }
 

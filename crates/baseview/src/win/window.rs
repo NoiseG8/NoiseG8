@@ -8,7 +8,7 @@ use winapi::um::oleidl::LPDROPTARGET;
 use winapi::um::winuser::{
     AdjustWindowRectEx, CreateWindowExW, DefWindowProcW, DestroyWindow, DispatchMessageW, GetDpiForWindow, GetMessageW, GetWindowLongPtrW, GetWindowLongW, LoadCursorW, PostMessageW, RedrawWindow, RegisterClassW, ReleaseCapture, SetCapture, SetLayeredWindowAttributes, SetProcessDpiAwarenessContext, SetTimer, SetWindowLongPtrW, SetWindowLongW, SetWindowPos, TranslateMessage, UnregisterClassW, UpdateLayeredWindow, CS_OWNDC, GET_XBUTTON_WPARAM, GWLP_USERDATA, GWL_EXSTYLE, IDC_ARROW, LWA_ALPHA, LWA_COLORKEY, MSG, RDW_ALLCHILDREN, RDW_ERASE, RDW_FRAME, RDW_INVALIDATE, SWP_ASYNCWINDOWPOS, SWP_DRAWFRAME, SWP_FRAMECHANGED, SWP_NOMOVE, SWP_NOSIZE, SWP_NOZORDER, WHEEL_DELTA, WM_CHAR, WM_CLOSE, WM_CREATE, WM_DPICHANGED, WM_INPUTLANGCHANGE, WM_KEYDOWN, WM_KEYUP, WM_LBUTTONDOWN, WM_LBUTTONUP, WM_MBUTTONDOWN, WM_MBUTTONUP, WM_MOUSEHWHEEL, WM_MOUSEMOVE, WM_MOUSEWHEEL, WM_NCDESTROY, WM_RBUTTONDOWN, WM_RBUTTONUP, WM_SHOWWINDOW, WM_SIZE, WM_SYSCHAR, WM_SYSKEYDOWN, WM_SYSKEYUP, WM_TIMER, WM_USER, WM_XBUTTONDOWN, WM_XBUTTONUP, WNDCLASSW, WS_CAPTION, WS_CHILD, WS_CLIPSIBLINGS, WS_EX_LAYERED, WS_EX_OVERLAPPEDWINDOW, WS_EX_TOOLWINDOW, WS_EX_TRANSPARENT, WS_MAXIMIZEBOX, WS_MINIMIZEBOX, WS_POPUPWINDOW, WS_SIZEBOX, WS_VISIBLE, XBUTTON1, XBUTTON2
 };
-
+use winapi::um::wingdi::RGB;
 use std::cell::{ Cell, Ref, RefCell, RefMut };
 use std::collections::VecDeque;
 use std::ffi::{ c_void, OsStr };
@@ -649,7 +649,7 @@ impl Window<'_> {
             );
 
             let hwnd = CreateWindowExW(
-                 WS_EX_LAYERED,
+                WS_EX_LAYERED,
                 window_class as _,
                 title.as_ptr(),
                 flags,
@@ -663,7 +663,9 @@ impl Window<'_> {
                 null_mut()
             );
             // todo: manage error ^
-            SetLayeredWindowAttributes(hwnd, 0, 12, LWA_ALPHA);
+
+            // SetLayeredWindowAttributes(hwnd, 0, 0, LWA_ALPHA);
+            SetLayeredWindowAttributes(hwnd, RGB(0x00,0x00,0x00), 0, LWA_COLORKEY);
             UpdateLayeredWindow(hwnd, null_mut(), null_mut(), null_mut(), null_mut(), null_mut(), 0, null_mut(), 0);
             UpdateLayeredWindow(parent as *mut _, null_mut(), null_mut(), null_mut(), null_mut(), null_mut(), 0, null_mut(), 0);
             // SetWindowLongW(
@@ -675,12 +677,12 @@ impl Window<'_> {
             // SetLayeredWindowAttributes(hwnd, 0, 70 as BYTE / 100u32 as u8, LWA_ALPHA);
             // let ex_style = GetWindowLongW(hwnd, GWL_EXSTYLE);
             // SetWindowLongW(hwnd, GWL_EXSTYLE, ex_style & (!WS_EX_LAYERED as i32));
-            RedrawWindow(
-                hwnd,
-                null_mut(),
-                null_mut(),
-                RDW_ERASE | RDW_INVALIDATE | RDW_FRAME | RDW_ALLCHILDREN
-            );
+            // RedrawWindow(
+            //     hwnd,
+            //     null_mut(),
+            //     null_mut(),
+            //     RDW_ERASE | RDW_INVALIDATE | RDW_FRAME | RDW_ALLCHILDREN
+            // );
 
             #[cfg(feature = "opengl")]
             let gl_context: Option<GlContext> = options.gl_config.map(|gl_config| {
@@ -690,10 +692,11 @@ impl Window<'_> {
 
                 GlContext::create(&handle, gl_config).expect("Could not create OpenGL context")
             });
-
             let (parent_handle, window_handle) = ParentHandle::new(hwnd);
             let parent_handle = if parented { Some(parent_handle) } else { None };
+            // window_vibrancy::apply_blur(&window_handle, Some((18, 18, 18, 125))).expect("Unsupported platform! 'apply_blur' is only supported on Windows");
 
+            
             let window_state = Rc::new(WindowState {
                 hwnd,
                 window_class,
