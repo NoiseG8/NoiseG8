@@ -1,6 +1,5 @@
 use winapi::shared::guiddef::GUID;
-use winapi::shared::minwindef::{ ATOM, BYTE, FALSE, LPARAM, LRESULT, UINT, WPARAM };
-use winapi::shared::rpcndr::byte;
+use winapi::shared::minwindef::{ ATOM, FALSE, LPARAM, LRESULT, UINT, WPARAM };
 use winapi::shared::windef::{ HWND, RECT };
 use winapi::um::combaseapi::CoCreateGuid;
 use winapi::um::ole2::{ OleInitialize, RegisterDragDrop, RevokeDragDrop };
@@ -649,7 +648,7 @@ impl Window<'_> {
             );
 
             let hwnd = CreateWindowExW(
-                WS_EX_LAYERED,
+                WS_EX_LAYERED | WS_EX_TRANSPARENT,
                 window_class as _,
                 title.as_ptr(),
                 flags,
@@ -664,25 +663,7 @@ impl Window<'_> {
             );
             // todo: manage error ^
 
-            // SetLayeredWindowAttributes(hwnd, 0, 0, LWA_ALPHA);
             SetLayeredWindowAttributes(hwnd, RGB(0x00,0x00,0x00), 0, LWA_COLORKEY);
-            UpdateLayeredWindow(hwnd, null_mut(), null_mut(), null_mut(), null_mut(), null_mut(), 0, null_mut(), 0);
-            UpdateLayeredWindow(parent as *mut _, null_mut(), null_mut(), null_mut(), null_mut(), null_mut(), 0, null_mut(), 0);
-            // SetWindowLongW(
-            //     hwnd,
-            //     GWL_EXSTYLE,
-            //     GetWindowLongW(hwnd, GWL_EXSTYLE) | (WS_EX_LAYERED as i32)
-            // );
-            // // Make this window 70% alpha
-            // SetLayeredWindowAttributes(hwnd, 0, 70 as BYTE / 100u32 as u8, LWA_ALPHA);
-            // let ex_style = GetWindowLongW(hwnd, GWL_EXSTYLE);
-            // SetWindowLongW(hwnd, GWL_EXSTYLE, ex_style & (!WS_EX_LAYERED as i32));
-            // RedrawWindow(
-            //     hwnd,
-            //     null_mut(),
-            //     null_mut(),
-            //     RDW_ERASE | RDW_INVALIDATE | RDW_FRAME | RDW_ALLCHILDREN
-            // );
 
             #[cfg(feature = "opengl")]
             let gl_context: Option<GlContext> = options.gl_config.map(|gl_config| {
@@ -694,8 +675,6 @@ impl Window<'_> {
             });
             let (parent_handle, window_handle) = ParentHandle::new(hwnd);
             let parent_handle = if parented { Some(parent_handle) } else { None };
-            // window_vibrancy::apply_blur(&window_handle, Some((18, 18, 18, 125))).expect("Unsupported platform! 'apply_blur' is only supported on Windows");
-
             
             let window_state = Rc::new(WindowState {
                 hwnd,
